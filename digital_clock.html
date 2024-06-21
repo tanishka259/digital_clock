@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            height: 90vh;
+            align-items: center;    
+            justify-content: center;
+        }
+        div{
+            font-size: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="time"></div>
+    <script>
+            let t=new Date();
+            let hrs=t.getHours().toString();
+            let mins=t.getMinutes().toString();
+            let secs=t.getSeconds().toString();
+            let i=secs;
+            setInterval(() => {
+                i++;
+                time= hrs + ":" + mins + ":" +i;
+                if(i<10){
+                    time= hrs + ":" + mins + ":" + "0"+i;
+                }
+                if(mins<10){
+                    time= hrs + ":" + "0"+ mins + ":" +i;
+                }
+                if(hrs<10){
+                    time= "0"+ hrs + ":" + mins + ":" +i;
+                }
+                if(i==59){
+                    mins=parseInt(mins)+1;
+                    i=-1;
+                }
+                if(mins==59){
+                    hrs=parseInt(hrs)+1;
+                    mins=-1;
+                }
+                if(hrs==23){
+                    hrs=0;
+                }
+                document.getElementById('time').innerHTML=time;
+            }, 1000);
+
+    </script>
+
+</body>
+</html>
